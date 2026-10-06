@@ -1481,4 +1481,271 @@ html.nhentai
   --el-fill-color-extra-light: #1f1f1f
   --el-fill-color-dark: #666666
   --el-border-color: #6e6e6e
+
+// ============================================================
+// Aurora 主题：紫蓝黑红渐变 / 大圆角 / 通透玻璃质感
+// 通过 html.aurora 生效，可与任意浅色/深色主题风格切换
+// ============================================================
+html.aurora
+  color-scheme: dark
+  --aurora-violet: #8b5cf6
+  --aurora-blue: #3b82f6
+  --aurora-red: #ff4d6d
+  --aurora-grad: linear-gradient(135deg, #8b5cf6, #3b82f6)
+  --aurora-grad-accent: linear-gradient(120deg, #8b5cf6, #3b82f6 48%, #ff4d6d)
+  --aurora-panel: rgba(30, 21, 56, 0.55)
+  --aurora-panel-solid: rgba(22, 15, 42, 0.88)
+  --aurora-border: rgba(148, 120, 255, 0.22)
+  --aurora-border-strong: rgba(148, 120, 255, 0.5)
+  --aurora-glow: 0 20px 44px -22px rgba(124, 92, 255, 0.6)
+  --aurora-radius-lg: 22px
+  --aurora-radius-md: 14px
+  --aurora-radius-sm: 10px
+
+  --el-bg-color: #0c0918
+  --el-bg-color-overlay: rgba(24, 16, 44, 0.96)
+  --el-bg-color-page: #0c0918
+  --el-fill-color-blank: transparent
+  --el-fill-color: rgba(148, 120, 255, 0.08)
+  --el-fill-color-light: rgba(148, 120, 255, 0.1)
+  --el-fill-color-extra-light: rgba(148, 120, 255, 0.07)
+  --el-fill-color-dark: rgba(148, 120, 255, 0.18)
+  --el-color-primary: #8b5cf6
+  --el-color-primary-light-3: #a184ff
+  --el-color-primary-light-5: #b9a4ff
+  --el-color-primary-light-7: #d2c6ff
+  --el-color-primary-light-8: #e2dbff
+  --el-color-primary-light-9: rgba(139, 92, 246, 0.18)
+  --el-color-primary-dark-2: #6d43e0
+  --el-color-success: #3b82f6
+  --el-color-danger: #ff4d6d
+  --el-color-warning: #f0a24b
+  --el-color-info: #9a91bf
+  --el-text-color-primary: #ece8ff
+  --el-text-color-regular: #c9c2e6
+  --el-text-color-secondary: #9a91bf
+  --el-text-color-placeholder: #7d75a3
+  --el-border-color: rgba(148, 120, 255, 0.22)
+  --el-border-color-light: rgba(148, 120, 255, 0.16)
+  --el-border-color-lighter: rgba(148, 120, 255, 0.12)
+  --el-border-color-extra-light: rgba(148, 120, 255, 0.08)
+  --el-border-radius-base: 12px
+  --el-border-radius-small: 10px
+  --el-border-radius-round: 999px
+  --el-box-shadow: 0 20px 48px -24px rgba(0, 0, 0, 0.85)
+  --el-box-shadow-light: 0 14px 32px -20px rgba(0, 0, 0, 0.75)
+  --el-mask-color: rgba(8, 5, 18, 0.72)
+
+  // 页面底色：紫 / 蓝 / 红三处柔光叠加在近黑底上
+  background: radial-gradient(1200px 820px at 10% -12%, rgba(139, 92, 246, 0.3), transparent 60%), radial-gradient(900px 720px at 90% -4%, rgba(59, 130, 246, 0.24), transparent 56%), radial-gradient(1100px 900px at 50% 122%, rgba(255, 77, 109, 0.16), transparent 62%), #08060f
+  background-attachment: fixed
+
+  body
+    background: transparent
+
+  // ---------- 滚动条 ----------
+  ::-webkit-scrollbar
+    width: 10px
+    height: 10px
+  ::-webkit-scrollbar-thumb
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.75), rgba(59, 130, 246, 0.75))
+    border-radius: 999px
+    border: 2px solid transparent
+    background-clip: padding-box
+  ::-webkit-scrollbar-thumb:hover
+    background: linear-gradient(180deg, #8b5cf6, #3b82f6)
+    background-clip: padding-box
+  ::-webkit-scrollbar-track
+    background: transparent
+
+  // ---------- 顶部进度条 ----------
+  #progressbar
+    background-color: transparent
+    background-image: var(--aurora-grad-accent)
+    border-radius: 999px
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.8)
+
+  // ---------- 搜索/工具条 ----------
+  .book-search-bar
+    margin: 10px auto 0
+    padding: 12px 10px
+    width: calc(100% - 24px)
+    border-radius: 999px
+    background: var(--aurora-panel)
+    border: 1px solid var(--aurora-border)
+    backdrop-filter: blur(18px)
+    box-shadow: var(--aurora-glow)
+
+  .fullscreen-button:hover
+    background-color: rgba(139, 92, 246, 0.22)
+    border-radius: 999px
+
+  // ---------- 通用控件：圆角 + 通透 ----------
+  .el-button
+    border-radius: var(--aurora-radius-md)
+    border-color: var(--aurora-border)
+    transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease
+  .el-button:hover
+    transform: translateY(-1px)
+  .el-button--primary:not(.is-plain):not(.is-link):not(.is-text)
+    border: 0
+    background-image: var(--aurora-grad)
+    box-shadow: 0 12px 24px -14px rgba(124, 92, 255, 0.95)
+  .el-button--primary.is-plain
+    background: rgba(148, 120, 255, 0.1)
+  .el-button.is-circle
+    border-radius: 999px
+  .el-button-group .el-button:first-child
+    border-radius: var(--aurora-radius-md) 0 0 var(--aurora-radius-md)
+  .el-button-group .el-button:last-child
+    border-radius: 0 var(--aurora-radius-md) var(--aurora-radius-md) 0
+
+  .el-input__wrapper, .el-textarea__inner, .el-select__wrapper
+    border-radius: var(--aurora-radius-md)
+    background: rgba(18, 12, 36, 0.6)
+    box-shadow: 0 0 0 1px var(--aurora-border) inset
+    transition: box-shadow 0.25s ease, background 0.25s ease
+  .el-input__wrapper.is-focus, .el-select__wrapper.is-focused, .el-textarea__inner:focus
+    background: rgba(22, 15, 44, 0.75)
+    box-shadow: 0 0 0 1px var(--aurora-border-strong) inset, 0 0 0 4px rgba(139, 92, 246, 0.16)
+
+  // NameFormItem 组合控件（标签 + 输入）：只圆外侧角，两半无缝拼接且左右半径一致
+  .name-select__prepend
+    border: 1px solid var(--aurora-border)
+    border-right: 0
+    border-radius: var(--aurora-radius-md) 0 0 var(--aurora-radius-md)
+    background: rgba(148, 120, 255, 0.08)
+    color: var(--el-text-color-secondary)
+    box-shadow: none
+  .name-select__append
+    border: 1px solid var(--aurora-border)
+    border-left: 0
+    border-radius: 0 var(--aurora-radius-md) var(--aurora-radius-md) 0
+    background: rgba(148, 120, 255, 0.08)
+    color: var(--el-text-color-secondary)
+    box-shadow: none
+  // 拼接处不画内侧线，两半共用一条外轮廓，视觉上是一个整体
+  .name-select__body.has-prepend .el-input__wrapper,
+  .name-select__body.has-prepend .el-select__wrapper
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+    box-shadow: inset 0 1px 0 var(--aurora-border), inset 0 -1px 0 var(--aurora-border), inset -1px 0 0 var(--aurora-border)
+  .name-select__body.has-append .el-input__wrapper,
+  .name-select__body.has-append .el-select__wrapper
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+    box-shadow: inset 0 1px 0 var(--aurora-border), inset 0 -1px 0 var(--aurora-border), inset 1px 0 0 var(--aurora-border)
+  .name-select__body.has-prepend.has-append .el-input__wrapper,
+  .name-select__body.has-prepend.has-append .el-select__wrapper
+    border-radius: 0
+    box-shadow: inset 0 1px 0 var(--aurora-border), inset 0 -1px 0 var(--aurora-border)
+  .name-select__body.has-prepend .el-textarea__inner
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+    box-shadow: inset 0 1px 0 var(--aurora-border), inset 0 -1px 0 var(--aurora-border), inset -1px 0 0 var(--aurora-border)
+  .name-select__body.has-append .el-textarea__inner
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+    box-shadow: inset 0 1px 0 var(--aurora-border), inset 0 -1px 0 var(--aurora-border), inset 1px 0 0 var(--aurora-border)
+  .name-select__body.has-prepend.has-append .el-textarea__inner
+    border-radius: 0
+    box-shadow: inset 0 1px 0 var(--aurora-border), inset 0 -1px 0 var(--aurora-border)
+
+  // 原生 el-input 的 prepend/append 同样处理
+  .el-input-group__prepend
+    border-radius: var(--aurora-radius-md) 0 0 var(--aurora-radius-md)
+    background: rgba(148, 120, 255, 0.08)
+    box-shadow: 0 0 0 1px var(--aurora-border) inset
+    border: 0
+  .el-input-group__append
+    border-radius: 0 var(--aurora-radius-md) var(--aurora-radius-md) 0
+    background: rgba(148, 120, 255, 0.08)
+    box-shadow: 0 0 0 1px var(--aurora-border) inset
+    border: 0
+  .el-input-group--prepend .el-input__wrapper
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+  .el-input-group--append .el-input__wrapper
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+  .el-input-group--prepend.el-input-group--append .el-input__wrapper
+    border-radius: 0
+
+  .el-tag
+    border-radius: 999px
+    border-width: 0
+    backdrop-filter: blur(4px)
+
+  .el-rate__icon
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.45))
+
+  // ---------- 卡片 / 弹窗 / 抽屉：玻璃质感 ----------
+  .el-card, .el-dialog, .el-drawer
+    border-radius: var(--aurora-radius-lg)
+    border: 1px solid var(--aurora-border)
+    background: var(--aurora-panel-solid)
+    backdrop-filter: blur(22px)
+    box-shadow: var(--aurora-glow)
+    overflow: hidden
+  .el-dialog__header, .el-drawer__header
+    margin-right: 0
+    padding-bottom: 16px
+    border-bottom: 1px solid var(--aurora-border)
+  .el-message-box
+    border-radius: var(--aurora-radius-lg)
+    border: 1px solid var(--aurora-border)
+    background: var(--aurora-panel-solid)
+    backdrop-filter: blur(22px)
+  .el-overlay
+    backdrop-filter: blur(2px)
+  .el-popper.is-light, .el-select-dropdown, .el-autocomplete-suggestion
+    border-radius: var(--aurora-radius-md)
+    border: 1px solid var(--aurora-border)
+    background: var(--aurora-panel-solid)
+    backdrop-filter: blur(18px)
+    box-shadow: var(--aurora-glow)
+  .el-dropdown-menu
+    border-radius: var(--aurora-radius-md)
+    padding: 6px
+
+  // ---------- 分页 ----------
+  .pagination-bar
+    .el-pagination.is-background .btn-prev, .el-pagination.is-background .btn-next, .el-pagination.is-background .el-pager li
+      border-radius: 999px
+    .el-pagination.is-background .el-pager li.is-active
+      background-image: var(--aurora-grad)
+      box-shadow: 0 8px 18px -10px rgba(124, 92, 255, 0.95)
+
+  // ---------- 书籍卡片 ----------
+  .book-card
+    border-radius: var(--aurora-radius-lg)
+    border: 1px solid var(--aurora-border)
+    background: linear-gradient(160deg, rgba(44, 31, 78, 0.72), rgba(17, 11, 33, 0.78))
+    backdrop-filter: blur(14px)
+    box-shadow: 0 18px 38px -26px rgba(0, 0, 0, 0.95)
+    overflow: hidden
+    transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease
+  .book-card::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 3px
+    background: var(--aurora-grad-accent)
+    opacity: 0.9
+  .book-card:hover
+    transform: translateY(-6px)
+    border-color: var(--aurora-border-strong)
+    box-shadow: 0 30px 54px -24px rgba(124, 92, 255, 0.75)
+  .book-card .book-cover
+    border-radius: var(--aurora-radius-md)
+    box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.9)
+  .book-card .book-title
+    color: var(--el-text-color-primary)
+    font-weight: 600
+  .book-card .book-card-language, .book-card .book-card-pagecount
+    border-radius: 999px
+  .book-card .book-status-tag
+    border-radius: 999px
 </style>

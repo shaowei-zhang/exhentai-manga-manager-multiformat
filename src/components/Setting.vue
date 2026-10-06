@@ -49,6 +49,7 @@
                   <el-option label="ExHentai" value="dark exhentai"></el-option>
                   <el-option label="E-Hentai" value="light e-hentai"></el-option>
                   <el-option label="nHentai" value="dark nhentai"></el-option>
+                  <el-option label="Aurora" value="dark aurora"></el-option>
                 </el-select>
               </NameFormItem>
             </div>
